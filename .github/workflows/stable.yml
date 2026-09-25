@@ -4,7 +4,7 @@ on:
     workflow_dispatch:
 
 env:
-    SIGNING_KEYSTORE_PATH: ./secrets/signing_key.jks
+    SIGNING_KEYSTORE_FILE: ./secrets/signing_key.jks
     OUTPUT_DIR: ./dist
 
 permissions:
