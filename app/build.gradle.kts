@@ -8,11 +8,11 @@ plugins {
 }
 
 android {
-    namespace = "io.github.zyrouge.symphony"
+    namespace = "io.github.damilola.symphony"
     compileSdk = libs.versions.compile.sdk.get().toInt()
 
     defaultConfig {
-        applicationId = "io.github.zyrouge.symphony"
+        applicationId = "io.github.damilola.symphony"
         minSdk = libs.versions.min.sdk.get().toInt()
         targetSdk = libs.versions.target.sdk.get().toInt()
 
