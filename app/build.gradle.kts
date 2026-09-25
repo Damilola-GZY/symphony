@@ -16,7 +16,7 @@ android {
         minSdk = libs.versions.min.sdk.get().toInt()
         targetSdk = libs.versions.target.sdk.get().toInt()
 
-        versionCode = 115
+        versionCode = 116
         versionName = "2024.12.116"
         versionName = System.getenv("APP_VERSION_NAME") ?: versionName
 

@@ -2,6 +2,10 @@ const p = require("path");
 const fs = require("fs-extra");
 const { rootDir, appI18nDir } = require("./utils");
 
+async function ensureDir(dir) {
+    await fs.ensureDir(dir);
+}
+
 /**
  * @type {import("phrasey").PhraseyHooksHandler}
  */
@@ -30,7 +34,7 @@ async function createTranslationsKt(phrasey, state, log) {
         a.locale.display.localeCompare(b.locale.display),
     );
     const content = `
-package io.github.zyrouge.symphony.services.i18n
+package io.github.damilola.symphony.services.i18n
 
 @Suppress("ClassName")
 open class _Translations {
@@ -50,6 +54,7 @@ ${sortedTranslations
 }
     `;
     const path = p.join(appI18nDir, "Translations.g.kt");
+    await fs.ensureDir(appI18nDir);
     await fs.writeFile(path, content);
     log.success(`Generated "${p.relative(rootDir, path)}".`);
 }
@@ -90,7 +95,7 @@ async function createTranslationKt(phrasey, state, log) {
     }
 
     const content = `
-package io.github.zyrouge.symphony.services.i18n
+package io.github.damilola.symphony.services.i18n
 
 import androidx.compose.runtime.Immutable
 import kotlinx.serialization.Serializable
@@ -127,6 +132,7 @@ ${dynamicKeys.join("\n")}
 }
     `;
     const path = p.join(appI18nDir, "Translation.g.kt");
+    await fs.ensureDir(appI18nDir);
     await fs.writeFile(path, content);
     log.success(`Generated "${p.relative(rootDir, path)}".`);
 }
