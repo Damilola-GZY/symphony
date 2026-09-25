@@ -4,7 +4,7 @@ on:
     workflow_dispatch:
 
 env:
-    SIGNING_KEYSTORE_FILE: ./secrets/signing_key.jks
+    SIGNING_KEYSTORE_PATH: ./secrets/signing_key.jks
     OUTPUT_DIR: ./dist
 
 permissions:
@@ -39,10 +39,10 @@ jobs:
 
             - name: 🔨 Generate certificate
               run: |
-                  mkdir -p $(dirname $SIGNING_KEYSTORE_FILE)
-                  echo $SIGNING_KEYSTORE_FILE_CONTENT | base64 -di > $SIGNING_KEYSTORE_FILE
+                  mkdir -p $(dirname $SIGNING_KEYSTORE_PATH)
+                  echo $SIGNING_KEYSTORE_BASE64 | base64 -di > $SIGNING_KEYSTORE_PATH
               env:
-                  SIGNING_KEYSTORE_FILE_CONTENT: ${{ secrets.SIGNING_KEYSTORE_FILE }}
+                  SIGNING_KEYSTORE_BASE64: ${{ secrets.SIGNING_KEYSTORE_BASE64 }}
 
             - name: 🔨 Build assets
               run: |
