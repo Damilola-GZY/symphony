@@ -39,8 +39,8 @@ jobs:
 
             - name: 🔨 Generate certificate
               run: |
-                  mkdir -p $(dirname $SIGNING_KEYSTORE_File)
-                  echo $SIGNING_KEYSTORE_BASE64 | base64 -di > $SIGNING_KEYSTORE_File
+                  mkdir -p $(dirname $SIGNING_KEYSTORE_FILE)
+                  echo $SIGNING_KEYSTORE_BASE64 | base64 -di > $SIGNING_KEYSTORE_FILE
               env:
                   SIGNING_KEYSTORE_BASE64: ${{ secrets.SIGNING_KEYSTORE_BASE64 }}
 
